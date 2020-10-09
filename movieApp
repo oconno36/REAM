@@ -1,1 +1,26 @@
+import java.io.*;
+import java.util.*;
+public class Movie 
+{
+	public string genre;
+  public int rate;
+  
+public Movie() {
+}
+  
+public string getGenre() {
+  return genre;
+}
+
+public int getRate() {
+  return rate;
+}
+
+public void sort() {
+}
+
+public void filter() {
+}
+
+}
 
