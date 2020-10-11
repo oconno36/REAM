@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
 
-public class ColorFrame extends JFrame implements ActionListener
+public class UserInterface extends JFrame implements ActionListener
 {
 	private JButton but1;
 	private JButton but2;
@@ -17,7 +17,7 @@ public class ColorFrame extends JFrame implements ActionListener
 	/**
 	 * constructor creates all components of a ColorFrame 
 	 */
-	public ColorFrame()
+	public UserInterface()
 	{
 	but1 = new JButton("Movies");
 	but1.addActionListener(this);
@@ -62,7 +62,7 @@ public class ColorFrame extends JFrame implements ActionListener
 	 */
 	public static void main(String[] args)
 	{
-		ColorFrame color = new ColorFrame();
+		UserInterface color = new UserInterface();
 		
 		color.setVisible (true);
 	}
