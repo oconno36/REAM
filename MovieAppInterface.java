@@ -13,7 +13,7 @@ public class ColorFrame extends JFrame implements ActionListener
 	private JButton but2;
 	private JButton but3;
 	private JPanel panel;
-	
+	JLabel movieList = new JLabel("List of Movies");
 	/**
 	 * constructor creates all components of a ColorFrame 
 	 */
@@ -23,7 +23,7 @@ public class ColorFrame extends JFrame implements ActionListener
 	but1.addActionListener(this);
 	but2= new JButton("Genres");
 	but2.addActionListener(this);
-	label1= new JLabel("List of Movies");
+	
 	
 	panel= new JPanel();
 	panel.add(but1);
@@ -44,8 +44,8 @@ public class ColorFrame extends JFrame implements ActionListener
 	public void actionPerformed(ActionEvent event) 
 	{ 
 		if(event.getActionCommand().equals("Movies"))
-			panel.setBackground(Color.RED);
-			panel.add(label1);
+			// panel.setBackground(Color.RED);
+			panel.add(movieList);
 		if(event.getActionCommand().equals("Genres"))
 			panel.setBackground(Color.GREEN);
 		//if(event.getActionCommand().equals("Blue"))
