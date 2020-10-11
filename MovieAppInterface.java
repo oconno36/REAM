@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
+import javax.swing.JLabel;
 
 public class ColorFrame extends JFrame implements ActionListener
 {
@@ -22,8 +23,7 @@ public class ColorFrame extends JFrame implements ActionListener
 	but1.addActionListener(this);
 	but2= new JButton("Genres");
 	but2.addActionListener(this);
-	//but3= new JButton("Blue");
-	//but3.addActionListener(this);
+	label1= new JLabel("List of Movies");
 	
 	panel= new JPanel();
 	panel.add(but1);
@@ -43,12 +43,13 @@ public class ColorFrame extends JFrame implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent event) 
 	{ 
-		if(event.getActionCommand().equals("Red"))
+		if(event.getActionCommand().equals("Movies"))
 			panel.setBackground(Color.RED);
-		if(event.getActionCommand().equals("Green"))
+			panel.add(label1);
+		if(event.getActionCommand().equals("Genres"))
 			panel.setBackground(Color.GREEN);
-		if(event.getActionCommand().equals("Blue"))
-			panel.setBackground(Color.BLUE);
+		//if(event.getActionCommand().equals("Blue"))
+		//	panel.setBackground(Color.BLUE);
 			
 	}
 	
