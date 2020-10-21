@@ -1,0 +1,56 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+public class UserLogin extends JFrame implements ActionListener {
+   JPanel panel;
+   JLabel usernameL, passwordL, message;
+   JTextField usernameT;
+   JPasswordField passwordT;
+   JButton login, cancel,add, delete;
+   
+   UserLogin() {
+      usernameL = new JLabel();
+      usernameL.setText("User Name :");
+      usernameT = new JTextField();
+      passwordL = new JLabel();
+      passwordL.setText("Password :");
+      passwordT = new JPasswordField();
+      login = new JButton("LOGIN");
+      add= new JButton("Create Account");
+      add.addActionListener(this);
+      delete = new JButton("Delete Account");
+  	  delete.addActionListener(this);
+      panel = new JPanel();
+      panel.setLayout((LayoutManager) new BoxLayout(panel, BoxLayout.Y_AXIS));
+    		  
+      panel.add(usernameL);
+      panel.add(usernameT);
+      panel.add(passwordL);
+      panel.add(passwordT);
+      message = new JLabel();
+      panel.add(message);
+      panel.add(login);
+      panel.add(add);
+      panel.add(delete);
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+     
+      login.addActionListener(this);
+      add(panel, BorderLayout.CENTER);
+      setTitle("Please Login Here !");
+      setSize(450,350);
+      setVisible(true);
+   }
+   public static void main(String[] args) {
+      new UserLogin();
+   }
+   @Override
+   public void actionPerformed(ActionEvent ae) {
+      String userName = usernameT.getText();
+      String password = passwordT.getText();
+      if (userName.trim().equals("admin") && password.trim().equals("admin")) {
+         message.setText(" Hello " + userName + "");
+      } else {
+         message.setText(" Invalid user.. ");
+      }
+   }
+}
