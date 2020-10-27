@@ -2,25 +2,31 @@ import java.io.*;
 import java.util.*;
 public class Movie 
 {
-  public string genre;
+  public String name;
+  public String genre;
   public int rate;
   
 public Movie() {
+	name="";
+	genre="";
+	rate=0;
+}
+
+public Movie(String n, String g, int r) {
+	name=n;
+	genre=g;
+	rate=r;
 }
   
-public string getGenre() {
+public String getName() {
+	return name;
+}
+
+public String getGenre() {
   return genre;
 }
 
 public int getRate() {
   return rate;
 }
-
-public void sort() {
 }
-
-public void filter() {
-}
-
-}
-
