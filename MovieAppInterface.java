@@ -77,6 +77,7 @@ public class UserInterface extends JFrame implements ActionListener
 		//panel.setBackground(Color.GREEN);
 		//if(event.getActionCommand().equals("Blue"))
 		//	panel.setBackground(Color.BLUE);
+		//
 			
 	}
 	
