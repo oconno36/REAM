@@ -1,21 +1,25 @@
 import java.io.*;
 import java.util.*;
+import java.util.ArrayList;
 public class Movie 
 {
   public String name;
   public String genre;
   public int rate;
+  public ArrayList<String> actors;
   
 public Movie() {
 	name="";
 	genre="";
 	rate=0;
+	actors= new ArrayList<String>();
 }
 
-public Movie(String n, String g, int r) {
+public Movie(String n, String g, int r, ArrayList<String> a) {
 	name=n;
 	genre=g;
 	rate=r;
+	actors= a;
 }
   
 public String getName() {
@@ -28,5 +32,9 @@ public String getGenre() {
 
 public int getRate() {
   return rate;
+}
+
+public ArrayList<String> getActors() {
+	return actors;
 }
 }
