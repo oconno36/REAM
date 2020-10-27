@@ -21,7 +21,7 @@ public class UserInterface extends JFrame implements ActionListener
 	private JPanel panel;
 	JLabel prompt = new JLabel();
 	/**
-	 * constructor creates all components of a ColorFrame 
+	 * constructor creates all components of a ColorFrame! 
 	 */
 	public UserInterface()
 	{
