@@ -1,23 +1,30 @@
-public class User {
+import java.io.*;
+import java.util.*;
+public class User 
+{
   String password;
   String username;
 
-  public User() {
+public User() 
+{
     password="";
     username="";
-    }
+}
   
-  public User(String p, String u) {
+public User(String u, String p) 
+{
+	username=u;
     password=p;
-    username=n;
-    }
+}
     
-  public String getUsername() {
-	  return username;
-    }
+public String getUsername() 
+{
+	return username;
+}
 
-  public String getPassword() {
+public String getPassword() 
+{
   return password;
-  }
+}
 }
     
