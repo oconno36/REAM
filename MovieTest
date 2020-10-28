@@ -14,7 +14,6 @@ public class MovieTest {
 		assertEquals("", mov.getGenre());
 		assertEquals(0, mov.getRate());
 		assertEquals(actorsList, mov.getActors());
-		fail("Not yet implemented");
 	}
 
 	@Test
@@ -27,7 +26,6 @@ public class MovieTest {
 		assertEquals("Thriller", mov.getGenre());
 		assertEquals(10, mov.getRate());
 		assertEquals(actorsList, mov.getActors());
-		fail("Not yet implemented");
 	}
 
 	@Test
@@ -38,7 +36,6 @@ public class MovieTest {
 		actorsList.add("Moira");
 		Movie mov= new Movie("Avatar", "Thriller", 10, actorsList);
 		assertEquals("Avatar", mov.getName());
-		fail("Not yet implemented");
 	}
 
 	@Test
@@ -49,7 +46,6 @@ public class MovieTest {
 		actorsList.add("Moira");
 		Movie mov= new Movie("Avatar", "Thriller", 10, actorsList);
 		assertEquals("Thriller", mov.getGenre());
-		fail("Not yet implemented");
 	}
 
 	@Test
@@ -60,7 +56,6 @@ public class MovieTest {
 		actorsList.add("Moira");
 		Movie mov= new Movie("Avatar", "Thriller", 10, actorsList);
 		assertEquals(10, mov.getRate());
-		fail("Not yet implemented");
 	}
 
 	@Test
@@ -71,6 +66,5 @@ public class MovieTest {
 		actorsList.add("Moira");
 		Movie mov= new Movie("Avatar", "Thriller", 10, actorsList);
 		assertEquals(actorsList, mov.getActors());
-		fail("Not yet implemented");
 	}
 }
