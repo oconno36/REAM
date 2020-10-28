@@ -16,10 +16,10 @@ public Movie() {
 }
 
 public Movie(String n, String g, int r, ArrayList<String> a) {
-	name=n;
-	genre=g;
-	rate=r;
-	actors= a;
+	n=name;
+	g=genre;
+	r=rate;
+	a=actors;
 }
   
 public String getName() {
