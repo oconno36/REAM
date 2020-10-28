@@ -1,0 +1,32 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class UserTest {
+
+	@Test
+	public void testUser() {
+		User person1= new User();
+		assertEquals("", person1.getUsername());
+		assertEquals("", person1.getPassword());
+	}
+
+	@Test
+	public void testUserStringString() {
+		User person1= new User("admin","password");
+		assertEquals("admin", person1.getUsername());
+		assertEquals("password", person1.getPassword());
+	}
+
+	@Test
+	public void testGetUsername() {
+		User person1= new User("admin","password");
+		assertEquals("admin", person1.getUsername());
+	}
+
+	@Test
+	public void testGetPassword() {
+		User person1= new User("admin","password");
+		assertEquals("password", person1.getPassword());
+	}
+}
