@@ -1,0 +1,23 @@
+public class User {
+  String password;
+  String username;
+
+  public User() {
+    password="";
+    username="";
+    }
+  
+  public User(String p, String u) {
+    password=p;
+    username=n;
+    }
+    
+  public String getUsername() {
+	  return username;
+    }
+
+  public String getPassword() {
+  return password;
+  }
+}
+    
