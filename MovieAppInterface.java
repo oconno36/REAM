@@ -1,3 +1,4 @@
+  
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -79,7 +80,7 @@ public class MovieAppInterface extends JFrame implements ActionListener
 			// Movie list
 			panel.add(prompt);
 			prompt.setText("This is a list of movies: ");
-			movies.setText("Movie 1 \t \t \t \nMovie 2");
+			movies.setText("Maleficent \t \t \t \nParasite");
 			for(int i = 0; i < movieArray.size(); i++) {
 				movies.setText(movies.getText() + "\n" + movieArray.get(i));
 			}
@@ -99,7 +100,7 @@ public class MovieAppInterface extends JFrame implements ActionListener
 		
 		if(event.getActionCommand().equals("Fantasy")) {
 			movies.setLocation(150, 300);
-			movies.setText("Movie 1 \t \t \t \nHarry Potter");
+			movies.setText("Maleficent \t \t \t \nHarry Potter");
 		}
 		
 		//panel.setBackground(Color.GREEN);
