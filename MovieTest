@@ -1,0 +1,76 @@
+import static org.junit.Assert.*;
+import java.util.ArrayList;
+
+import org.junit.Test;
+
+public class MovieTest {
+	
+	ArrayList<String> actorsList = new ArrayList<String>();
+
+	@Test
+	public void testMovie() {
+		Movie mov = new Movie();
+		assertEquals("", mov.getName());
+		assertEquals("", mov.getGenre());
+		assertEquals(0, mov.getRate());
+		assertEquals(actorsList, mov.getActors());
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testMovieStringStringIntArrayListOfString() {
+		actorsList.add("Emma");
+		actorsList.add("Adam");
+		actorsList.add("Moira");
+		Movie mov= new Movie("Avatar", "Thriller", 10, actorsList);
+		assertEquals("Avatar", mov.getName());
+		assertEquals("Thriller", mov.getGenre());
+		assertEquals(10, mov.getRate());
+		assertEquals(actorsList, mov.getActors());
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetName() {
+		ArrayList<String> actorsList = new ArrayList<String>();
+		actorsList.add("Emma");
+		actorsList.add("Adam");
+		actorsList.add("Moira");
+		Movie mov= new Movie("Avatar", "Thriller", 10, actorsList);
+		assertEquals("Avatar", mov.getName());
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetGenre() {
+		ArrayList<String> actorsList = new ArrayList<String>();
+		actorsList.add("Emma");
+		actorsList.add("Adam");
+		actorsList.add("Moira");
+		Movie mov= new Movie("Avatar", "Thriller", 10, actorsList);
+		assertEquals("Thriller", mov.getGenre());
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetRate() {
+		ArrayList<String> actorsList = new ArrayList<String>();
+		actorsList.add("Emma");
+		actorsList.add("Adam");
+		actorsList.add("Moira");
+		Movie mov= new Movie("Avatar", "Thriller", 10, actorsList);
+		assertEquals(10, mov.getRate());
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetActors() {
+		ArrayList<String> actorsList = new ArrayList<String>();
+		actorsList.add("Emma");
+		actorsList.add("Adam");
+		actorsList.add("Moira");
+		Movie mov= new Movie("Avatar", "Thriller", 10, actorsList);
+		assertEquals(actorsList, mov.getActors());
+		fail("Not yet implemented");
+	}
+}
