@@ -1,56 +1,136 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.PrintWriter;
+import java.util.Scanner;
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
+
 public class UserLogin extends JFrame implements ActionListener {
-   JPanel panel;
-   JLabel usernameL, passwordL, message;
-   JTextField usernameT;
-   JPasswordField passwordT;
-   JButton login, cancel,add, delete;
-   
-   UserLogin() {
-      usernameL = new JLabel();
-      usernameL.setText("User Name :");
+	JPanel panel1; 
+	JLabel usernameL, passwordL, message;
+	JTextField usernameT;
+    JPasswordField passwordT;
+    JButton login, add, delete, enter;
+    
+    UserLogin() {
+      usernameL = new JLabel("User Name :");
       usernameT = new JTextField();
-      passwordL = new JLabel();
-      passwordL.setText("Password :");
+      passwordL = new JLabel("Password :");
       passwordT = new JPasswordField();
       login = new JButton("LOGIN");
+      login.addActionListener(this);
       add= new JButton("Create Account");
       add.addActionListener(this);
       delete = new JButton("Delete Account");
   	  delete.addActionListener(this);
-      panel = new JPanel();
-      panel.setLayout((LayoutManager) new BoxLayout(panel, BoxLayout.Y_AXIS));
-    		  
-      panel.add(usernameL);
-      panel.add(usernameT);
-      panel.add(passwordL);
-      panel.add(passwordT);
+  	  enter= new JButton("Enter Application");
+  	  enter.addActionListener(this);
+  	  panel1 = new JPanel(new BorderLayout()); 
+  	  panel1.setLayout((LayoutManager) new BoxLayout(panel1, BoxLayout.Y_AXIS));
+      
+      panel1.add(usernameL);
+      panel1.add(usernameT);
+      panel1.add(passwordL);
+      panel1.add(passwordT);
       message = new JLabel();
-      panel.add(message);
-      panel.add(login);
-      panel.add(add);
-      panel.add(delete);
+      panel1.add(message);
+      panel1.add(login);
+      panel1.add(add);
+      panel1.add(delete);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     
-      login.addActionListener(this);
-      add(panel, BorderLayout.CENTER);
-      setTitle("Please Login Here !");
-      setSize(450,350);
-      setVisible(true);
+  	  JFrame frame = new JFrame();
+	  frame.add(panel1);
+	  frame.setSize(325,225);
+	  frame.setTitle("Login to your Movie Screen"); 
+	  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	  frame.setVisible(true);
    }
+   
+   /*public void readContactsFromFile()
+	{
+		Scanner obj = null;
+		File contacts=null;
+		
+		try 
+		{
+			contacts=new File("contacts.txt");
+			obj = new Scanner(contacts);
+			String s = "";
+			
+			while(obj.hasNextLine()) 
+			{
+				s = obj.nextLine() + "\n";
+			}
+			
+			textArea.setText(s);
+			
+	    }
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		finally
+		{
+			obj.close();
+		}
+	}*/
+   
+   public void writeContactsToFile()
+	{
+		PrintWriter write = null;
+		File users = null;
+		
+		try
+		{
+			users = new File("users.txt");
+			write = new PrintWriter(users);
+		}
+		catch(Exception e) 
+		{
+			System.out.print(e);
+		}
+		finally 
+		{
+			write.close();
+		}
+	}
+    
+    public void actionPerformed(ActionEvent event) 
+	{ 
+		if(event.getActionCommand().equals("Create Account")) 
+		{
+			String userName = usernameT.getText();
+
+			message.setText("Welcome " + userName + ", you are now in the System!");
+			
+			writeContactsToFile();
+			
+			panel1.remove(add);
+		    panel1.remove(login);
+		    panel1.remove(delete);
+		    panel1.add(enter);
+		}
+		
+		if(event.getActionCommand().equals("LOGIN"))
+		{
+			String userName = usernameT.getText();
+		    
+		    message.setText(" Hello " + userName + "");
+		    
+		    panel1.remove(add);
+		    panel1.remove(login);
+		    panel1.remove(delete);
+		    panel1.add(enter);
+		} 
+		
+		if(event.getActionCommand().equals("Enter Application")) 
+		{
+			new MovieAppInterface();
+		}
+	}
+	
    public static void main(String[] args) {
-      new UserLogin();
-   }
-   @Override
-   public void actionPerformed(ActionEvent ae) {
-      String userName = usernameT.getText();
-      String password = passwordT.getText();
-      if (userName.trim().equals("admin") && password.trim().equals("admin")) {
-         message.setText(" Hello " + userName + "");
-      } else {
-         message.setText(" Invalid user.. ");
-      }
+	   UserLogin log = new UserLogin();
    }
 }
