@@ -47,24 +47,21 @@ public class UserLogin extends JFrame implements ActionListener {
 	  frame.setVisible(true);
    }
    
-   /*public void readContactsFromFile()
+   public void readContactsFromFile()
 	{
 		Scanner obj = null;
-		File contacts=null;
+		File users = null;
 		
 		try 
 		{
-			contacts=new File("contacts.txt");
-			obj = new Scanner(contacts);
+			users=new File("users.txt");
+			obj = new Scanner(users);
 			String s = "";
 			
 			while(obj.hasNextLine()) 
 			{
 				s = obj.nextLine() + "\n";
 			}
-			
-			textArea.setText(s);
-			
 	    }
 		catch(Exception e)
 		{
@@ -74,7 +71,7 @@ public class UserLogin extends JFrame implements ActionListener {
 		{
 			obj.close();
 		}
-	}*/
+	}
    
    public void writeContactsToFile()
 	{
@@ -132,5 +129,6 @@ public class UserLogin extends JFrame implements ActionListener {
 	
    public static void main(String[] args) {
 	   UserLogin log = new UserLogin();
+	   log.readContactsFromFile();
    }
 }
