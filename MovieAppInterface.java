@@ -99,8 +99,33 @@ public class MovieAppInterface extends JFrame implements ActionListener
 		}
 		
 		if(event.getActionCommand().equals("Fantasy")) {
-			movies.setLocation(150, 300);
-			movies.setText("Maleficent \t \t \t \nHarry Potter");
+			//movies.setLocation(150, 300);
+			movies.setText("Lord of the Ring \t \t \nHarry Potter");
+		}
+		
+		if(event.getActionCommand().equals("Comedy")) {
+			//movies.setLocation(150, 300);
+			movies.setText("A Goofy Movie \t \t \nMegamind");
+		}
+		
+		if(event.getActionCommand().equals("Romance")) {
+			//movies.setLocation(150, 300);
+			movies.setText("The Pricess Bride \t \t \nCinderella");
+		}
+		
+		if(event.getActionCommand().equals("Sci-Fi")) {
+			//movies.setLocation(150, 300);
+			movies.setText("The Martian \t \t \nEnder's Game");
+		}
+		
+		if(event.getActionCommand().equals("Mystery")) {
+			//movies.setLocation(150, 300);
+			movies.setText("The Hound of the Baskerville \t \t \nA Study in Scarlet");
+		}
+		
+		if(event.getActionCommand().equals("Feel-Good")) {
+			//movies.setLocation(150, 300);
+			movies.setText("Zootopia \t \t \nRatatouille");
 		}
 		
 		//panel.setBackground(Color.GREEN);
@@ -121,6 +146,13 @@ public class MovieAppInterface extends JFrame implements ActionListener
 		movieArray.add("The Martian");
 		movieArray.add("Ender's Game");
 		movieArray.add("The Pricess Bride");
+		movieArray.add("A Goofy Movie");
+		movieArray.add("Megamind");
+		movieArray.add("Cinderella");
+		movieArray.add("The Hound of the Baskerville");
+		movieArray.add("A Study in Scarlet");
+		movieArray.add("Zootopia");
+		movieArray.add("Rataouille");
 
 		color.setVisible (true);
 	}
