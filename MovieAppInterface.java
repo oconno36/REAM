@@ -1,9 +1,14 @@
-  
-import java.awt.Color;
+ import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -26,6 +31,10 @@ public class MovieAppInterface extends JFrame implements ActionListener
 	private JPanel panel;
 	JLabel prompt = new JLabel();
 	JTextArea movies = new JTextArea();
+	// images
+	JLabel label;
+	JLabel label2;
+	boolean moviePicUp = false;
 	static ArrayList<String> movieArray = new ArrayList();
 	/**
 	 * constructor creates all components of a ColorFrame! 
@@ -66,6 +75,7 @@ public class MovieAppInterface extends JFrame implements ActionListener
 	/**
 	 * gives each of the buttons an action 
 	 */
+	@SuppressWarnings("deprecation")
 	public void actionPerformed(ActionEvent event) 
 	{ 
 		if(event.getActionCommand().equals("Movies")) {
@@ -85,10 +95,33 @@ public class MovieAppInterface extends JFrame implements ActionListener
 				movies.setText(movies.getText() + "\n" + movieArray.get(i));
 			}
 			panel.add(movies);
+			
+			try {
+				if(!moviePicUp) {
+					BufferedImage image = ImageIO.read(new File("./LordOfTheRings.png"));
+					label = new JLabel(new ImageIcon(image));
+					panel.add(label);
+
+					BufferedImage image2 = ImageIO.read(new File("./HarryPotter.png"));
+					label2 = new JLabel(new ImageIcon(image2));
+					panel.add(label2);
+
+					moviePicUp = true;
+				}
+			} 
+			catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		if(event.getActionCommand().equals("Genres")) {
 			movies.setText("");
 			prompt.setText("This is a list of genres\n");
+			panel.remove(label);
+			panel.remove(label2);
+			moviePicUp = false;
+			
 			panel.add(prompt);
 			panel.add(gBut4);
 			panel.add(gBut5);
@@ -99,8 +132,33 @@ public class MovieAppInterface extends JFrame implements ActionListener
 		}
 		
 		if(event.getActionCommand().equals("Fantasy")) {
-			movies.setLocation(150, 300);
-			movies.setText("Maleficent \t \t \t \nHarry Potter");
+			//movies.setLocation(150, 300);
+			movies.setText("Lord of the Ring \t \t \nHarry Potter");
+		}
+		
+		if(event.getActionCommand().equals("Comedy")) {
+			//movies.setLocation(150, 300);
+			movies.setText("A Goofy Movie \t \t \nMegamind");
+		}
+		
+		if(event.getActionCommand().equals("Romance")) {
+			//movies.setLocation(150, 300);
+			movies.setText("The Pricess Bride \t \t \nCinderella");
+		}
+		
+		if(event.getActionCommand().equals("Sci-Fi")) {
+			//movies.setLocation(150, 300);
+			movies.setText("The Martian \t \t \nEnder's Game");
+		}
+		
+		if(event.getActionCommand().equals("Mystery")) {
+			//movies.setLocation(150, 300);
+			movies.setText("The Hound of the Baskerville \t \t \nA Study in Scarlet");
+		}
+		
+		if(event.getActionCommand().equals("Feel-Good")) {
+			//movies.setLocation(150, 300);
+			movies.setText("Zootopia \t \t \nRatatouille");
 		}
 		
 		//panel.setBackground(Color.GREEN);
@@ -121,6 +179,13 @@ public class MovieAppInterface extends JFrame implements ActionListener
 		movieArray.add("The Martian");
 		movieArray.add("Ender's Game");
 		movieArray.add("The Pricess Bride");
+		movieArray.add("A Goofy Movie");
+		movieArray.add("Megamind");
+		movieArray.add("Cinderella");
+		movieArray.add("The Hound of the Baskerville");
+		movieArray.add("A Study in Scarlet");
+		movieArray.add("Zootopia");
+		movieArray.add("Rataouille");
 
 		color.setVisible (true);
 	}
