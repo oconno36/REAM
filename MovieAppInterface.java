@@ -1,4 +1,4 @@
- import java.awt.Color;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -31,11 +32,14 @@ public class MovieAppInterface extends JFrame implements ActionListener
 	private JPanel panel;
 	JLabel prompt = new JLabel();
 	JTextArea movies = new JTextArea();
+	JTextField search = new JTextField(15);
+	private JButton searchButton;
 	// images
 	JLabel label;
 	JLabel label2;
 	boolean moviePicUp = false;
 	static ArrayList<String> movieArray = new ArrayList();
+	static ArrayList<String> movieSearch = new ArrayList();
 	/**
 	 * constructor creates all components of a ColorFrame! 
 	 */
@@ -53,12 +57,14 @@ public class MovieAppInterface extends JFrame implements ActionListener
 		gBut7 = new JButton("Sci-Fi");
 		gBut8 = new JButton("Mystery");
 		gBut9 = new JButton("Feel-Good");
+		searchButton = new JButton("Search");
 		gBut4.addActionListener(this);
 		gBut5.addActionListener(this);
 		gBut6.addActionListener(this);
 		gBut7.addActionListener(this);
 		gBut8.addActionListener(this);
 		gBut9.addActionListener(this);
+		searchButton.addActionListener(this);
 		panel= new JPanel();
 		panel.add(but1);
 		panel.add(but2);
@@ -86,11 +92,13 @@ public class MovieAppInterface extends JFrame implements ActionListener
 			panel.remove(gBut7);
 			panel.remove(gBut8);
 			panel.remove(gBut9);
-			//panel.setBackground(Color.LIGHT_GRAY);
+			panel.add(search);
+			panel.add(searchButton);
+			
 			// Movie list
 			panel.add(prompt);
 			prompt.setText("This is a list of movies: ");
-			movies.setText("Maleficent \t \t \t \nParasite");
+			movies.setText("\t \t \t");
 			for(int i = 0; i < movieArray.size(); i++) {
 				movies.setText(movies.getText() + "\n" + movieArray.get(i));
 			}
@@ -115,6 +123,17 @@ public class MovieAppInterface extends JFrame implements ActionListener
 			}
 			
 		}
+		
+		if(event.getActionCommand().equals("Search")) {
+			movies.setText("");
+			for(int i = 0; i < movieArray.size(); i++) {
+				if(movieArray.get(i).contains(search.getText())) {
+					movies.setText(movies.getText() + "\n" + movieArray.get(i));
+				}
+			}
+			movies.setText(movies.getText() + "\n\t\t\t");
+		}
+		
 		if(event.getActionCommand().equals("Genres")) {
 			movies.setText("");
 			prompt.setText("This is a list of genres\n");
@@ -132,38 +151,29 @@ public class MovieAppInterface extends JFrame implements ActionListener
 		}
 		
 		if(event.getActionCommand().equals("Fantasy")) {
-			//movies.setLocation(150, 300);
 			movies.setText("Lord of the Ring \t \t \nHarry Potter");
 		}
 		
 		if(event.getActionCommand().equals("Comedy")) {
-			//movies.setLocation(150, 300);
 			movies.setText("A Goofy Movie \t \t \nMegamind");
 		}
 		
 		if(event.getActionCommand().equals("Romance")) {
-			//movies.setLocation(150, 300);
 			movies.setText("The Pricess Bride \t \t \nCinderella");
 		}
 		
 		if(event.getActionCommand().equals("Sci-Fi")) {
-			//movies.setLocation(150, 300);
 			movies.setText("The Martian \t \t \nEnder's Game");
 		}
 		
 		if(event.getActionCommand().equals("Mystery")) {
-			//movies.setLocation(150, 300);
 			movies.setText("The Hound of the Baskerville \t \t \nA Study in Scarlet");
 		}
 		
 		if(event.getActionCommand().equals("Feel-Good")) {
-			//movies.setLocation(150, 300);
 			movies.setText("Zootopia \t \t \nRatatouille");
 		}
 		
-		//panel.setBackground(Color.GREEN);
-		//if(event.getActionCommand().equals("Blue"))
-		//	panel.setBackground(Color.BLUE);
 		//
 	}
 
@@ -174,6 +184,8 @@ public class MovieAppInterface extends JFrame implements ActionListener
 	public static void main(String[] args)
 	{
 		MovieAppInterface color = new MovieAppInterface();
+		movieArray.add("Maleficent");
+		movieArray.add("The Hobbit");
 		movieArray.add("Lord of the Rings");
 		movieArray.add("Harry Potter");
 		movieArray.add("The Martian");
