@@ -9,21 +9,21 @@ import javax.swing.border.TitledBorder;
 public class UserLogin extends JFrame implements ActionListener {
 	JPanel panel1; 
 	JLabel usernameL, passwordL, message;
-	JTextField usernameT;
-    JPasswordField passwordT;
-    JButton login, add, delete, enter;
+	JTextField usernameT, passwordT;
+    JButton login, add, enter;
+    String stru, strp;
     
     UserLogin() {
       usernameL = new JLabel("User Name :");
       usernameT = new JTextField();
+      stru = usernameT.getText().toString();
       passwordL = new JLabel("Password :");
-      passwordT = new JPasswordField();
+      passwordT = new JTextField();
+      strp = passwordT.getText().toString();
       login = new JButton("LOGIN");
       login.addActionListener(this);
       add= new JButton("Create Account");
       add.addActionListener(this);
-      delete = new JButton("Delete Account");
-  	  delete.addActionListener(this);
   	  enter= new JButton("Enter Application");
   	  enter.addActionListener(this);
   	  panel1 = new JPanel(new BorderLayout()); 
@@ -37,7 +37,6 @@ public class UserLogin extends JFrame implements ActionListener {
       panel1.add(message);
       panel1.add(login);
       panel1.add(add);
-      panel1.add(delete);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   	  JFrame frame = new JFrame();
 	  frame.add(panel1);
@@ -46,33 +45,6 @@ public class UserLogin extends JFrame implements ActionListener {
 	  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	  frame.setVisible(true);
    }
-   
-   public void readContactsFromFile()
-	{
-		Scanner obj = null;
-		File users = null;
-		
-		try 
-		{
-			users=new File("users.txt");
-			obj = new Scanner(users);
-			String s = "";
-			
-			while(obj.hasNextLine()) 
-			{
-				s = obj.nextLine() + "\n";
-			}
-			//textArea.setText(s);
-	    }
-		catch(Exception e)
-		{
-			System.out.println(e);
-		}
-		finally
-		{
-			obj.close();
-		}
-	}
    
    public void writeContactsToFile()
 	{
@@ -83,7 +55,7 @@ public class UserLogin extends JFrame implements ActionListener {
 		{
 			users= new File("users.txt");
 			write = new PrintWriter(users);
-			write.print(usernameT.getText() + ", " + passwordT.getPassword());
+			write.print(usernameT.getText() + ", " + passwordT.getText());
 			
 		}
 		catch(Exception e) 
@@ -101,37 +73,39 @@ public class UserLogin extends JFrame implements ActionListener {
 		if(event.getActionCommand().equals("Create Account")) 
 		{
 			writeContactsToFile();
-			
 			String userName = usernameT.getText();
+	    	String pass = passwordT.getText();
+			User u1= new User(userName, pass);
 
 			message.setText("Welcome " + userName + ", you are now in the System!");
 			
 			panel1.remove(add);
 		    panel1.remove(login);
-		    panel1.remove(delete);
 		    panel1.add(enter);
 		}
 		
 		if(event.getActionCommand().equals("LOGIN"))
 		{
+			writeContactsToFile();
 			String userName = usernameT.getText();
+	    	String pass = passwordT.getText();
+			User u1= new User(userName, pass);
 		    
-		    message.setText(" Hello " + userName + "");
+		    message.setText("Hello " + userName);
 		    
 		    panel1.remove(add);
 		    panel1.remove(login);
-		    panel1.remove(delete);
 		    panel1.add(enter);
 		} 
 		
 		if(event.getActionCommand().equals("Enter Application")) 
 		{
 			new MovieAppInterface();
+	    	
 		}
 	}
 	
    public static void main(String[] args) {
-	   UserLogin log = new UserLogin();
-	   log.readContactsFromFile();
+	   new UserLogin();
    }
 }
