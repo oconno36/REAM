@@ -8,7 +8,7 @@ public class CommentTest {
 	@Test
 	public void testComment() {
 		Comment c1= new Comment();
-		assertEquals(new User(), c1.getUser());
+		assertEquals(null, c1.getUser());
 		assertEquals("", c1.getComment());
 	}
 
@@ -21,8 +21,8 @@ public class CommentTest {
 
 	@Test
 	public void testGetComment() {
-		Comment c1= new Comment();
-		assertEquals("", c1.getComment());
+		Comment com2=new Comment(u1, "good");
+		assertEquals("good", com2.getComment());
 	}
 
 	@Test
