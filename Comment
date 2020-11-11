@@ -6,7 +6,7 @@ public class Comment
 	
 	
 	public Comment() {
-		real=new User();
+		real=null;
 		com="";
 	}
 	
