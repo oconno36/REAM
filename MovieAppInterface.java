@@ -32,6 +32,7 @@ public class MovieAppInterface extends JFrame implements ActionListener
 	private JPanel panel;
 	JLabel prompt = new JLabel();
 	JTextArea movies = new JTextArea();
+	JTextArea info = new JTextArea();
 	JTextField search = new JTextField(15);
 	private JButton searchButton;
 	// images
@@ -84,6 +85,36 @@ public class MovieAppInterface extends JFrame implements ActionListener
 	@SuppressWarnings("deprecation")
 	public void actionPerformed(ActionEvent event) 
 	{ 
+		if(event.getActionCommand().equals("Profile"))
+		{
+			Scanner obj = null;
+			File users = null;
+	
+			try 
+			{
+			users=new File("users.txt");
+			obj = new Scanner(users);
+			String s = "";
+		
+			while(obj.hasNextLine()) 
+			{
+				s = obj.nextLine() + "\n";
+			}
+			int i= s.indexOf(", ");
+			String start= s.substring(0,i);
+			String end=s.substring(i+2,s.length());
+			info.setText("Username: " + start + "\nPassword: " + end);
+    			}
+			catch(Exception e)
+			{
+				System.out.println(e);
+			}
+			finally
+			{
+				obj.close();
+			}
+			panel.add(info);
+		}
 		if(event.getActionCommand().equals("Movies")) {
 			// Removes Genres buttons
 			panel.remove(gBut4);
@@ -92,6 +123,7 @@ public class MovieAppInterface extends JFrame implements ActionListener
 			panel.remove(gBut7);
 			panel.remove(gBut8);
 			panel.remove(gBut9);
+			panel.remove(info);
 			panel.add(search);
 			panel.add(searchButton);
 			
@@ -139,6 +171,7 @@ public class MovieAppInterface extends JFrame implements ActionListener
 			prompt.setText("This is a list of genres\n");
 			panel.remove(label);
 			panel.remove(label2);
+			panel.remove(info);
 			moviePicUp = false;
 			
 			panel.add(prompt);
