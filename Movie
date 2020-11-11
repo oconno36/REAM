@@ -1,40 +1,59 @@
 import java.io.*;
 import java.util.*;
 import java.util.ArrayList;
+
+import javax.swing.JLabel;
 public class Movie 
 {
-  public String name;
-  public String genre;
-  public int rate;
-  public ArrayList<String> actors;
-  
-public Movie() {
-	name="";
-	genre="";
-	rate=0;
-	actors= new ArrayList<String>();
-}
+	public String name;
+	public String genre;
+	public int rate;
+	public String[] actors;
+	public JLabel movieTitle = new JLabel();
+	public JLabel movieImage = new JLabel();
+	public File imageFile;
 
-public Movie(String n, String g, int r, ArrayList<String> a) {
-	name=n;
-	genre=g;
-	rate=r;
-	actors=a;
-}
-  
-public String getName() {
-	return name;
-}
+	public Movie() {
+		name = "";
+		genre = "";
+		rate = 0;
+		actors = null;
+		imageFile = null;
+	}
 
-public String getGenre() {
-  return genre;
-}
+	public Movie(String n, String g, int r, String[] actors2, File i) {
+		name = n;
+		genre = g;
+		rate = r;
+		actors = actors2;
+		imageFile = i;
+	}
 
-public int getRate() {
-  return rate;
-}
+	public String getName() {
+		return name;
+	}
 
-public ArrayList<String> getActors() {
-	return actors;
-}
+	public String getGenre() {
+		return genre;
+	}
+
+	public int getRate() {
+		return rate;
+	}
+
+	public String[] getActors() {
+		return actors;
+	}
+	
+	public JLabel getMovieTitle() {
+		return movieTitle;
+	}
+
+	public JLabel getMovieImage() {
+		return movieImage;
+	}
+	
+	public File getImageFile() {
+		return imageFile;
+	}
 }
