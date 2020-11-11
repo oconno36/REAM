@@ -8,6 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -81,6 +83,36 @@ public class MovieAppInterface extends JFrame implements ActionListener
 		frame.setTitle("MovieApp");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		
+		
+		String[] actors = {"Actor Name","",""};
+		movieArray.add(new Movie("The Hobbit", "Fantasy", 8, actors, new File("./TheHobbit.png")));
+		String[] actors2 = {"Actor Name","",""};
+		movieArray.add(new Movie("Maleficent", "Fantasy", 8, actors2, new File("./Maleficent.png")));
+		String[] actors3 = {"Actor Name","",""};
+		movieArray.add(new Movie("Lord of the Rings", "Fantasy", 8, actors3, new File("./LordOfTheRings.png")));
+		String[] actors4 = {"Actor Name","",""};
+		movieArray.add(new Movie("Harry Potter", "Fantasy", 8, actors4, new File("./HarryPotter.png")));
+		String[] actors5 = {"Actor Name","",""};
+		movieArray.add(new Movie("The Martian", "Sci-Fi", 8, actors5, new File("./TheMartian.png")));
+		String[] actors6 = {"Actor Name","",""};
+		movieArray.add(new Movie("Ender's Game", "Sci-Fi", 8, actors6, new File("./Ender'sGame.png")));
+		String[] actors7 = {"Actor Name","",""};
+		movieArray.add(new Movie("The Pricess Bride", "Romance", 8, actors7, new File("./ThePricessBride.png")));
+		String[] actors8 = {"Actor Name","",""};
+		movieArray.add(new Movie("A Goofy Movie", "Comedy", 8, actors8, new File("./AGoofyMovie.png")));
+		String[] actors9 = {"Actor Name","",""};
+		movieArray.add(new Movie("Megamind", "Comedy", 8, actors9, new File("./Megamind.png")));
+		String[] actors10 = {"Actor Name","",""};
+		movieArray.add(new Movie("Cinderella", "Romance", 8, actors10, new File("./Cinderella.png")));
+		String[] actors11 = {"Actor Name","",""};
+		movieArray.add(new Movie("The Hound of the Baskerville", "Mystery", 8, actors11, new File("./TheHoundOfTheBaskervilles.png")));
+		String[] actors12 = {"Actor Name","",""};
+		movieArray.add(new Movie("A Study in Scarlet", "Mystery", 8, actors12, new File("./AStudyInScarlet.png")));
+		String[] actors13 = {"Actor Name","",""};
+		movieArray.add(new Movie("Zootopia", "Feel-Good", 8, actors13, new File("./Zootopia.png")));
+		String[] actors14 = {"Actor Name","",""};
+		movieArray.add(new Movie("Ratatouille", "Feel-Good", 8, actors14, new File("./Ratatouille.png")));
 	}
 
 	/**
@@ -91,33 +123,52 @@ public class MovieAppInterface extends JFrame implements ActionListener
 	{ 
 		if(event.getActionCommand().equals("Profile"))
 		{
+			// Removes Genres buttons
+			panel.remove(gBut4);
+			panel.remove(gBut5);
+			panel.remove(gBut6);
+			panel.remove(gBut7);
+			panel.remove(gBut8);
+			panel.remove(gBut9);
+			panel.remove(info);
+			// Removes Movie features
+			prompt.setText("Profile Information:\n");
+			panel.remove(search);
+			panel.remove(searchButton);
+			panel.remove(info);
+			moviePicUp = false;
+			for(int i = 0; i < movieArray.size(); i++) {
+				panel.remove(movieArray.get(i).getMovieTitle());
+				panel.remove(movieArray.get(i).getMovieImage());
+			}
+			
 			Scanner obj = null;
 			File users = null;
-	
-		try 
-		{
-			users=new File("users.txt");
-			obj = new Scanner(users);
-			String s = "";
-		
-			while(obj.hasNextLine()) 
+
+			try 
 			{
-			s = obj.nextLine() + "\n";
+				users=new File("users.txt");
+				obj = new Scanner(users);
+				String s = "";
+
+				while(obj.hasNextLine()) 
+				{
+					s = obj.nextLine() + "\n";
+				}
+				int i= s.indexOf(", ");
+				String start= s.substring(0,i);
+				String end=s.substring(i+2,s.length());
+				info.setText("Username: " + start + "\nPassword: " + end);
 			}
-			int i= s.indexOf(", ");
-			String start= s.substring(0,i);
-			String end=s.substring(i+2,s.length());
-			info.setText("Username: " + start + "\nPassword: " + end);
-    		}
-		catch(Exception e)
-		{
-			System.out.println(e);
-		}
-		finally
-		{
-			obj.close();
-		}
-		panel.add(info);
+			catch(Exception e)
+			{
+				System.out.println(e);
+			}
+			finally
+			{
+				obj.close();
+			}
+			panel.add(info);
 		}
 		
 		if(event.getActionCommand().equals("Movies")) {
@@ -201,7 +252,6 @@ public class MovieAppInterface extends JFrame implements ActionListener
 		
 		if(event.getActionCommand().equals("Genres")) {
 			// Remove Movie features
-			movies.setText("");
 			prompt.setText("This is a list of genres\n");
 			panel.remove(search);
 			panel.remove(searchButton);
@@ -316,35 +366,6 @@ public class MovieAppInterface extends JFrame implements ActionListener
 	public static void main(String[] args)
 	{
 		MovieAppInterface color = new MovieAppInterface();
-		String[] actors = {"Actor Name","",""};
-		movieArray.add(new Movie("The Hobbit", "Fantasy", 8, actors, new File("./LordOfTheRings.png")));
-		String[] actors2 = {"Actor Name","",""};
-		movieArray.add(new Movie("Maleficent", "Fantasy", 8, actors2, new File("./LordOfTheRings.png")));
-		String[] actors3 = {"Actor Name","",""};
-		movieArray.add(new Movie("Lord of the Rings", "Fantasy", 8, actors3, new File("./LordOfTheRings.png")));
-		String[] actors4 = {"Actor Name","",""};
-		movieArray.add(new Movie("Harry Potter", "Fantasy", 8, actors4, new File("./HarryPotter.png")));
-		String[] actors5 = {"Actor Name","",""};
-		movieArray.add(new Movie("The Martian", "Sci-Fi", 8, actors5, new File("./LordOfTheRings.png")));
-		String[] actors6 = {"Actor Name","",""};
-		movieArray.add(new Movie("Ender's Game", "Sci-Fi", 8, actors6, new File("./LordOfTheRings.png")));
-		String[] actors7 = {"Actor Name","",""};
-		movieArray.add(new Movie("The Pricess Bride", "Romance", 8, actors7, new File("./LordOfTheRings.png")));
-		String[] actors8 = {"Actor Name","",""};
-		movieArray.add(new Movie("A Goofy Movie", "Comedy", 8, actors8, new File("./LordOfTheRings.png")));
-		String[] actors9 = {"Actor Name","",""};
-		movieArray.add(new Movie("Megamind", "Comedy", 8, actors9, new File("./LordOfTheRings.png")));
-		String[] actors10 = {"Actor Name","",""};
-		movieArray.add(new Movie("Cinderella", "Romance", 8, actors10, new File("./LordOfTheRings.png")));
-		String[] actors11 = {"Actor Name","",""};
-		movieArray.add(new Movie("The Hound of the Baskerville", "Mystery", 8, actors11, new File("./LordOfTheRings.png")));
-		String[] actors12 = {"Actor Name","",""};
-		movieArray.add(new Movie("A Study in Scarlet", "Mystery", 8, actors12, new File("./LordOfTheRings.png")));
-		String[] actors13 = {"Actor Name","",""};
-		movieArray.add(new Movie("Zootopia", "Feel-Good", 8, actors13, new File("./LordOfTheRings.png")));
-		String[] actors14 = {"Actor Name","",""};
-		movieArray.add(new Movie("Rataouille", "Feel-Good", 8, actors14, new File("./LordOfTheRings.png")));
-
 		color.setVisible (true);
 	}
 }
