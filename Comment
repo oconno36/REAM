@@ -1,0 +1,25 @@
+import java.io.*;
+public class Comment 
+{
+	public User real;
+	public String com;
+	
+	
+	public Comment() {
+		real=new User();
+		com="";
+	}
+	
+	public Comment(User r, String c) {
+		real=r;
+		com=c;
+	}
+	
+	public User getUser() {
+		return real;
+	}
+	
+	public String getComment() {
+		return com;
+	}
+}
