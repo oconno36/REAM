@@ -1,0 +1,33 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class CommentTest {
+	User u1= new User("Emma", "pass");
+	
+	@Test
+	public void testComment() {
+		Comment c1= new Comment();
+		assertEquals(new User(), c1.getUser());
+		assertEquals("", c1.getComment());
+	}
+
+	@Test
+	public void testCommentUserString() {
+		Comment com1=new Comment(u1, "great!");
+		assertEquals(u1, com1.getUser());
+		assertEquals("great!", com1.getComment());
+	}
+
+	@Test
+	public void testGetComment() {
+		Comment c1= new Comment();
+		assertEquals("", c1.getComment());
+	}
+
+	@Test
+	public void testGetUser() {
+		Comment com1=new Comment(u1, "great!");
+		assertEquals(u1, com1.getUser());
+	}
+}
