@@ -23,7 +23,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import java.awt.Color;
-import javax.swing.JLabel;
+import javax.swing.JLabel; 
 
 public class MovieAppInterface extends JFrame implements ActionListener
 {
