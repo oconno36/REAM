@@ -60,7 +60,7 @@ public class UserLogin extends JFrame implements ActionListener {
 		try
 		{
 			write = new PrintWriter(new BufferedWriter(new FileWriter(users, true)));
-			write.print(usernameT.getText() + ", " + passwordT.getText() + "\n");
+			write.print(usernameT.getText() + ", " + passwordT.getText() + ", 2" + "\n");
 		}
 		catch(Exception e) 
 		{
@@ -76,23 +76,10 @@ public class UserLogin extends JFrame implements ActionListener {
 	{ 
 		if(event.getActionCommand().equals("Create Account")) 
 		{
-			writeContactsToFile();
-			String userName = usernameT.getText();
-
-			message.setText("Welcome " + userName + ", you are now in the System!");
 			
-			u = new User(usernameT.getText(), passwordT.getText());
-			
-			panel1.remove(add);
-		    panel1.remove(login);
-		    panel1.remove(guest);
-		    panel1.add(enter);
-		}
-		
-		if(event.getActionCommand().equals("LOGIN"))
-		{
 			Scanner scan = null;
 			File users=null;
+			int status=2;
 			
 			try 
 			{
@@ -108,8 +95,59 @@ public class UserLogin extends JFrame implements ActionListener {
 			String userName = usernameT.getText();
 			String password = passwordT.getText();
 			
-			if(!list.contains(userName + ", " + password))
+			if(list.contains(userName + ", " + password + ", 2") || list.contains(userName + ", " + password + ", 3")) 
+				message.setText("User already exists");
+			else {
+				
+			writeContactsToFile();
+
+			message.setText("Welcome " + userName + ", you are now in the System!");
+			
+			u = new User(usernameT.getText(), passwordT.getText()); 
+			
+			panel1.remove(add);
+		    panel1.remove(login);
+		    panel1.remove(guest);
+		    panel1.add(enter);
+			}
+			}
+			catch(Exception e) 
+			{
+				System.out.print(e);
+			}
+		}
+		
+		if(event.getActionCommand().equals("LOGIN"))
+		{
+			Scanner scan = null;
+			File users=null;
+			int status=2;
+			
+			try 
+			{
+				users=new File("users.txt");
+				scan = new Scanner(users);
+				ArrayList<String> list = new ArrayList<String>( );
+				
+				while(scan.hasNextLine()) 
+				{
+					list.add(scan.nextLine());
+				}
+					
+			String userName = usernameT.getText();
+			String password = passwordT.getText();
+			
+			if(!list.contains(userName + ", " + password + ", 2") && !list.contains(userName + ", " + password + ", 3")) 
 				message.setText("Invalid User. Enter as a guest or create a new account!");
+			
+			if(list.contains(userName + ", " + password + ", 3")) {
+				status=3;
+				message.setText("Hello " + userName);
+		        panel1.remove(add);
+				panel1.remove(login);
+				panel1.remove(guest);
+				panel1.add(enter);
+			}
 	
 			else {
 				message.setText("Hello " + userName);
@@ -123,7 +161,7 @@ public class UserLogin extends JFrame implements ActionListener {
 			{
 				System.out.print(e);
 			}
-			u= new User(usernameT.getText(), passwordT.getText());
+			u= new User(usernameT.getText(), passwordT.getText(), status);
 		}
 		
 		if(event.getActionCommand().equals("Enter as a guest"))
