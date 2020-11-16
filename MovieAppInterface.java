@@ -54,7 +54,7 @@ public class MovieAppInterface extends JFrame implements ActionListener
 	/**
 	 * constructor creates all components of a ColorFrame! 
 	 */
-	public MovieAppInterface()
+	public MovieAppInterface(User u)
 	{
 		but1 = new JButton("Movies");
 		but1.addActionListener(this);
@@ -378,7 +378,8 @@ public class MovieAppInterface extends JFrame implements ActionListener
 	 */
 	public static void main(String[] args)
 	{
-		MovieAppInterface color = new MovieAppInterface();
+		User u = new User();
+		MovieAppInterface color = new MovieAppInterface(u);
 		color.setVisible (true);
 	}
 }
