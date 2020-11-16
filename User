@@ -14,11 +14,11 @@ public User()
     username="";
 }
   
-public User(String u, String p, int userStatus) 
+public User(String u, String p) 
 {
 	username=u;
     password=p;
-    this.userStatus=userStatus;
+    userStatus = 1;
 }
     
 public String getUsername() 
