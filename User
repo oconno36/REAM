@@ -4,17 +4,21 @@ public class User
 {
   String password;
   String username;
-
+  int userStatus;
+// 1 = guest user 
+// 2 = normal user
+// 3 = moderator
 public User() 
 {
     password="";
     username="";
 }
   
-public User(String u, String p) 
+public User(String u, String p, int userStatus) 
 {
 	username=u;
     password=p;
+    this.userStatus=userStatus;
 }
     
 public String getUsername() 
@@ -27,4 +31,3 @@ public String getPassword()
   return password;
 }
 }
-    
