@@ -3,16 +3,18 @@ public class Comment
 {
 	public User real;
 	public String com;
-	
+	public Movie movie;
 	
 	public Comment() {
 		real=null;
 		com="";
+		movie = null;
 	}
 	
-	public Comment(User r, String c) {
+	public Comment(User r, String c, Movie m) {
 		real=r;
 		com=c;
+		movie = m;
 	}
 	
 	public User getUser() {
@@ -21,5 +23,9 @@ public class Comment
 	
 	public String getComment() {
 		return com;
+	}
+	
+	public Movie getMovie() {
+		return movie;
 	}
 }
