@@ -18,9 +18,15 @@ public User(String u, String p)
 {
 	username=u;
     password=p;
-    userStatus = 1;
+    userStatus = 2;
 }
-    
+
+public User(int i) {
+	username = "Guest";
+	password = "";
+	userStatus = 1;
+}
+
 public String getUsername() 
 {
 	return username;
