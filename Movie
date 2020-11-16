@@ -8,7 +8,7 @@ public class Movie
 	public String name;
 	public String genre;
 	public int rate;
-	public String[] actors;
+	public ArrayList<String> actors;
 	public JLabel movieTitle = new JLabel();
 	public JLabel movieImage = new JLabel();
 	public File imageFile;
@@ -21,7 +21,7 @@ public class Movie
 		imageFile = null;
 	}
 
-	public Movie(String n, String g, int r, String[] actors2, File i) {
+	public Movie(String n, String g, int r, ArrayList<String> actors2, File i) {
 		name = n;
 		genre = g;
 		rate = r;
@@ -41,7 +41,7 @@ public class Movie
 		return rate;
 	}
 
-	public String[] getActors() {
+	public ArrayList<String> getActors() {
 		return actors;
 	}
 	
