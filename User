@@ -36,4 +36,8 @@ public String getPassword()
 {
   return password;
 }
+
+public int getUserStatus() {
+	return userStatus;
+}
 }
