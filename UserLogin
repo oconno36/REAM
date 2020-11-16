@@ -16,6 +16,7 @@ public class UserLogin extends JFrame implements ActionListener {
 	JTextField usernameT, passwordT;
     JButton login, add, enter, guest;
     String stru, strp;
+    User u;
     
     UserLogin() {
       usernameL = new JLabel("User Name :");
@@ -60,7 +61,6 @@ public class UserLogin extends JFrame implements ActionListener {
 		{
 			write = new PrintWriter(new BufferedWriter(new FileWriter(users, true)));
 			write.print(usernameT.getText() + ", " + passwordT.getText() + "\n");
-			new User(usernameT.getText(), passwordT.getText());
 		}
 		catch(Exception e) 
 		{
@@ -80,6 +80,8 @@ public class UserLogin extends JFrame implements ActionListener {
 			String userName = usernameT.getText();
 
 			message.setText("Welcome " + userName + ", you are now in the System!");
+			
+			u = new User(usernameT.getText(), passwordT.getText());
 			
 			panel1.remove(add);
 		    panel1.remove(login);
@@ -121,6 +123,7 @@ public class UserLogin extends JFrame implements ActionListener {
 			{
 				System.out.print(e);
 			}
+			u= new User(usernameT.getText(), passwordT.getText());
 		}
 		
 		if(event.getActionCommand().equals("Enter as a guest"))
@@ -132,6 +135,7 @@ public class UserLogin extends JFrame implements ActionListener {
 		    panel1.remove(passwordL);
 		    panel1.remove(usernameT);
 		    panel1.remove(passwordT);
+		    u = new User(1);
 		    message.setText("Hello Guest!");
 		    panel1.add(enter);
 		    panel1.setSize(200,125);
@@ -139,7 +143,7 @@ public class UserLogin extends JFrame implements ActionListener {
 		
 		if(event.getActionCommand().equals("Enter Application")) 
 		{
-			new MovieAppInterface();
+			new MovieAppInterface(u);
 		}
 	}
 	
