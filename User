@@ -27,6 +27,12 @@ public User(int i) {
 	userStatus = 1;
 }
 
+public User(String u, String p, int us) {
+	username = u;
+	password = p;
+	userStatus = us;
+}
+
 public String getUsername() 
 {
 	return username;
